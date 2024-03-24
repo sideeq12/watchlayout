@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <title>Smartwatch</title>
+</head>
+<body>
+    <style>
+        .circle-cover{
+            height: 80px;
+            width: 80px;
+            border : 1px solid white;
+            border-radius: 100%;
+            padding: 5px;
+        }
+        .inner-cover{
+            background-color: white;
+            height : 100%;
+            width : 100%;
+            border-radius: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: orangered;
+        }
+        .welcover{
+            position: relative;
+        }
+        .welcome{
+            position: absolute;
+            top: 0;
+            background-image: url("background.png");
+            background-position: center;
+            background-size: cover;
+            filter: blur(8px);
+        }
+        .overlay{
+            position: absolute;
+            top: 0;
+            z-index: 6;
+        }
+    </style>
+
+     <div class="welcover">
+    <div  class="h-screen welcome w-screen">
+    </div>
+    <div class="overlay h-screen flex flex-col gap-3 justify-center align-center w-full">
+        <div  class="mx-auto w-fit">
+            <img src="offree.png" class="h-10 md:h-20" />
+        </div>
+        <div  class="h-1/2 mx-auto  w-fit">
+            <img src="watch.png" class="h-72 z-10" />
+        </div>
+        <div  class="mx-auto -mt-48 md:-mt-24   w-fit">
+            <img src="eclipe.png" class="h-24" />
+        </div>
+        <div  class="mx-auto -mt-20   w-fit">
+            <img src="Frame.png" class="h-20 w-20 ml-52 -mt-10" />
+        </div>
+        <button class="py-2 px-20 w-fit text-white mt-4 rounded-md mx-auto bg-neutral-800">JE CRAQUE</button>
+        <span class="font-semibold text-sm mt-2 mx-auto ">Recevez votre Smartwatch</span>
+        </div>
+   </div>
+</body>
+</html>
