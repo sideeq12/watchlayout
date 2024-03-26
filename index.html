@@ -49,7 +49,7 @@
             position: absolute;
             top: 0;
         }
-       .ville, .code, .box, .A_mail, .adress, .payment, .success,.mark1, .mark2{
+     .NomNote, .mailNote, .AdressNote, .villeNote, .codeNote,    .ville, .code, .box, .A_mail, .adress, .payment, .success,.mark1, .mark2{
             display: none;
         }
         
@@ -77,20 +77,20 @@
    </div>
 
    <!-- POP INFORMATION -->
-   <div class="popInfo h-fit z-40 w-full justify-center mt-10 mx-2 rounded-xl md:w-screen 
-    justify-center align-center shadow-lg bg-white md:bg-none">
+   <div class="popInfo h-fit z-40 w-full justify-center mx-2 rounded-xl md:w-screen 
+    justify-center align-center shadow-lg md:shadow-none bg-white md:bg-transparent">
 
     <div class="circle-cover md:hidden absolute -mt-10 ml-[35%] border-4 border-white  ">
         <div class="inner-cover font-semibold text-sm">
         </div> 
      </div>
 
-     <div class="cancel w-fit mt-4 ml-auto">
+     <div class="cancel w-fit mt-4 md:hidden ml-auto">
         <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-x mr-4" viewBox="0 0 16 16">
             <path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708"/>
           </svg>
     </div>
-<div class="flex flex-col md:flex-row justify-center  mt-14 md:mt-20 gap-6">
+<div class="flex flex-col w-fit mx-auto md:flex-row justify-center align-center mt-14 md:mt-10 gap-6">
     
    <div class="sideImage  flex flex-col gap-3 justify-center align-center text-center md:text-left ">
     <div  class="mx-auto w-fit">
@@ -124,14 +124,28 @@
             Remplisser vos coordonnees
         </span>
         <div class="space-y-3 text-xs mt-3 mx-4">
-            <input type="text" class="px-6 py-2 bg-gray-100 rounded-md w-full"  placeholder="Nom de famille" />
-            <input type="text" class="px-6 py-2 bg-gray-100 rounded-md w-full"  placeholder="Adress" />
-            <div class="flex justify-between w-full">
-                <input type="text" class="px-6 py-2 bg-gray-100 rounded-md w-1/3"  placeholder="Ville" />
-                <input type="number" class="px-6 py-2 bg-gray-100 rounded-md w-1/2"  placeholder="Code Portal" />
+            <div>
+                <span class="mb-1 text-xs text-red-500 NomNote">Merci de remplir ce champ obligatoire</span>
+                <input type="text" class="px-6 py-2 bg-gray-100 rounded-md w-full nom"  placeholder="Nom de famille" />
             </div>
-            
-            <input type="text" class="px-6 py-2 bg-gray-100 rounded-md w-full"  placeholder="Adress email" />
+            <div>
+            <span class="mb-1 text-xs text-red-500 AdressNote">Merci de remplir ce champ obligatoire</span>
+            <input type="text" class="px-6 py-2 bg-gray-100 rounded-md w-full"  placeholder="Adress" />
+            </div>
+            <div class="flex justify-between w-full">
+                <div class="w-1/3">
+            <span class="mb-1 text-xs text-red-500 villeNote"> Obligatoire</span>
+            <input type="text" class="px-6 py-2 bg-gray-100 rounded-md w-full"  placeholder="Ville" />
+                </div>
+                <div class="w-1/2">
+                    <span class="mb-1 text-xs text-red-500 codeNote"> Obligatoire</span>
+                    <input type="number" class="px-6 py-2 bg-gray-100 rounded-md w-full"  placeholder="Code Portal" />
+                        </div>
+            </div>
+            <div>
+                <span class="mb-1 text-xs text-red-500 mailNote">Merci de remplir ce champ obligatoire</span>
+                <input type="text" class="px-6 py-2 bg-gray-100 rounded-md w-full"  placeholder="Adress email" />
+            </div>
             <div class="text-xs">
                 <input type="checkbox" /> J'ais plus de 18 ans et j'acceptes les conditions
             </div>
@@ -159,7 +173,7 @@
         </div>
     </div>
     
-    <div class="payment w-72 bg-white mt-auto pt-6 relative mx-auto rounded-md ">
+    <div class="payment w-72  bg-white mt-auto pt-6 relative mx-auto rounded-md ">
         <div class="circle-cover absolute -mt-16 ml-[35%] hidden md:block border-4 border-white  ">
             <div class="inner-cover font-semibold text-sm">
             </div> 
@@ -222,7 +236,7 @@
     
 
        <!-- progress -->
-       <div class="progress hidden md:block flex  gap-2  w-fit mx-auto mt-10">
+       <div class="progress hidden md:flex  gap-2  w-fit mx-auto mt-10">
         <div class="first_circle border-2 border-white rounded-full h-12 w-12 border-2 bg-green-700 border-gray-300 text-center">
             <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="#fff" class="bi bi-check2 mx-auto mt-3" viewBox="0 0 16 16">
                 <path d="M13.854 3.646a.5.5 0 0 1 0 .708l-7 7a.5.5 0 0 1-.708 0l-3.5-3.5a.5.5 0 1 1 .708-.708L6.5 10.293l6.646-6.647a.5.5 0 0 1 .708 0"/>
@@ -252,6 +266,8 @@
 
 <script>
     const overlay = document.querySelector(".overlay")
+    const nom = document.querySelector(".nom")
+    const NomNote = document.querySelector(".NomNote")
     const box = document.querySelector(".box")  
     const mobPay = document.querySelector(".mobPay") 
     const form = document.querySelector(".form")
@@ -288,7 +304,6 @@
         let formattedMinutes = minutes < 10 ? "0" + minutes : minutes;
         let formattedSeconds = seconds < 10 ? "0" + seconds : seconds;
 
-        console.log(formattedMinutes + ":" + formattedSeconds);
         circle_timer.forEach((circ)=>{
             circ.textContent = formattedMinutes + ":" + formattedSeconds;
         })
@@ -313,12 +328,13 @@ start.addEventListener("click", ()=>{
 })
 
 send.addEventListener("click", ()=>{
-    payment.style.display = "block"
-    desktop_form.style.display= "none"
+    // payment.style.display = "block"
+    // desktop_form.style.display= "none"
     p2.style.display= "none"
     mark1.style.display= "block"
     second_circle.style.background= "rgb(22 163 74)"
-    secondLine.style.background= "rgb(22 163 74)"
+    secondLine.style.background= "rgb(22 163 74)";
+    nom.value.length > 2 ? "" : NomNote.style.display="block"
 
 })
 
