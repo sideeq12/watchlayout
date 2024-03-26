@@ -9,8 +9,8 @@
 <body>
     <style>
         .circle-cover{
-            height: 80px;
-            width: 80px;
+            height: 85px;
+            width: 85px;
             border : 8px solid white;
             border-radius: 100%;
             padding: 5px;
@@ -68,22 +68,27 @@
         <div  class="mx-auto -mt-20   w-fit">
             <img src="Frame.png" class="h-20 w-20 ml-52 -mt-10" />
         </div>
-        <button class="py-2 px-20 w-fit text-white mt-4 rounded-md mx-auto bg-neutral-800 start">JE CRAQUE</button>
+        <button class="py-4 px-20 w-fit text-white mt-4 rounded-md mx-auto bg-amber-950	 start">JE CRAQUE</button>
         <span class="font-semibold text-sm mt-2 mx-auto ">Recevez votre Smartwatch</span>
         </div>
    </div>
 
    <!-- POP INFORMATION -->
-   <div class="popInfo h-fit z-40  w-screen  justify-center align-center">
-<div class="flex justify-center mt-20 gap-6">
+   <div class="popInfo h-fit z-40 w-5/6 justify-center mt-10 ml-5 rounded-lg md:w-screen 
+    justify-center align-center shadow-md bg-white md:bg-none">
+    <div class="circle-cover md:hidden absolute -mt-10 ml-[35%] border-4 border-white  ">
+        <div class="inner-cover font-semibold text-sm">
+        </div> 
+     </div>
+<div class="flex flex-col md:flex-row justify-center  mt-14 md:mt-20 gap-6">
     
-   <div class="sideImage  flex flex-col gap-3 justify-center align-center ">
-    <div  class=" w-fit">
-        <img src="gst.png" class=" md:w-72" />
+   <div class="sideImage  flex flex-col gap-3 justify-center align-center text-center md:text-left ">
+    <div  class="mx-auto w-fit">
+        <img src="gst.png" class="w-40 md:w-72" />
     </div>
     <span class="font-bold text-sm  italic">Recevez votre Smartwatch</span>
-    <div  class="h-1/2  w-fit">
-        <img src="watch.png" class="h-72" />
+    <div  class="h-1/2  w-fit mx-auto">
+        <img src="watch.png" class="h-60 md:h-72" />
     </div>
     <div  class=" -mt-6 md;-mt-10   w-fit">
         <img src="eclipe.png" class="h-24" />
@@ -93,7 +98,7 @@
     </div>
     </div>
 
-        <div class="desktop_form bg-white shadow-md relative h-fit mt-auto w-72 rounded-md pt-6">
+        <div class="desktop_form hidden md:block bg-white shadow-md relative h-fit mt-auto w-72 rounded-md pt-6">
           <div class="circle-cover absolute -mt-16 ml-[35%] border-4 border-white  ">
        <div class="inner-cover font-semibold text-sm">
        </div> 
@@ -123,6 +128,18 @@
         <button class="bg-amber-950	 text-white w-full py-3 rounded-md mt-4 send">SEND</button>
     </div>
 
+    <div class="md:hidden flex flex-col mx-auto">
+        <div>Remplisser vos coordonnees</div>
+
+        <div class="flex bg-gray-100 mt-4">
+            <div>
+                <input type="text" class="pl-3 bg-gray-100" placeholder="Nom de famille"/>
+            </div>
+            <button class="bg-amber-950 px-4 py-3 rounded-md"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#fff" class="bi bi-arrow-right" viewBox="0 0 16 16">
+                <path fill-rule="evenodd" d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8"/>
+              </svg></button>
+        </div>
+    </div>
     
     <div class="payment w-72 bg-white mt-auto pt-6 relative rounded-md ">
         <div class="circle-cover absolute -mt-16 ml-[35%] border-4 border-white  ">
@@ -181,20 +198,20 @@
     
 
        <!-- progress -->
-       <div class="progress flex  gap-2  w-fit mx-auto mt-10">
+       <div class="progress hidden md:block flex  gap-2  w-fit mx-auto mt-10">
         <div class="first_circle border-2 border-white rounded-full h-12 w-12 border-2 bg-green-700 border-gray-300 text-center">
             <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="#fff" class="bi bi-check2 mx-auto mt-3" viewBox="0 0 16 16">
                 <path d="M13.854 3.646a.5.5 0 0 1 0 .708l-7 7a.5.5 0 0 1-.708 0l-3.5-3.5a.5.5 0 1 1 .708-.708L6.5 10.293l6.646-6.647a.5.5 0 0 1 .708 0"/>
               </svg>
         </div>
-        <div class="w-32 h-1  mt-6 bg-green-700"></div>
+        <div class="w-16 md:w-32 h-1  mt-6 bg-green-700"></div>
         <div class="second_circle rounded-full h-12 w-12  border-2 border-white  pl-3 bg-white">
             <div class="p2 mt-3 ml-2">2</div>
             <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="#fff" class="bi bi-check2 mark1 mt-3" viewBox="0 0 16 16">
                 <path d="M13.854 3.646a.5.5 0 0 1 0 .708l-7 7a.5.5 0 0 1-.708 0l-3.5-3.5a.5.5 0 1 1 .708-.708L6.5 10.293l6.646-6.647a.5.5 0 0 1 .708 0"/>
               </svg>
         </div>
-        <div class="w-32 h-1  mt-6 bg-white secondLine"></div>
+        <div class="w-16 md:w-32 h-1  mt-6 bg-white secondLine"></div>
         <div class="third_circle rounded-full h-12 w-12 border-2 border-white  bg-white">
             <div class="p3 mt-3 ml-4">3</div>
             <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="#fff" class="bi bi-check2 mark2 mx-auto mt-3" viewBox="0 0 16 16">
