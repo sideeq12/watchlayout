@@ -46,7 +46,7 @@
             position: absolute;
             top: 0;
         }
-        .payment, .success,.mark1, .mark2{
+       .ville, .code, .box, .A_mail, .adress, .payment, .success,.mark1, .mark2{
             display: none;
         }
         
@@ -74,17 +74,25 @@
    </div>
 
    <!-- POP INFORMATION -->
-   <div class="popInfo h-fit z-40 w-5/6 justify-center mt-10 ml-5 rounded-lg md:w-screen 
-    justify-center align-center shadow-md bg-white md:bg-none">
+   <div class="popInfo h-fit z-40 w-5/6 justify-center mt-10 ml-5 rounded-xl md:w-screen 
+    justify-center align-center shadow-lg bg-white md:bg-none">
+
     <div class="circle-cover md:hidden absolute -mt-10 ml-[35%] border-4 border-white  ">
         <div class="inner-cover font-semibold text-sm">
         </div> 
      </div>
+
+     <div class="cancel w-fit mt-4 ml-auto">
+        <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-x mr-4" viewBox="0 0 16 16">
+            <path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708"/>
+          </svg>
+    </div>
 <div class="flex flex-col md:flex-row justify-center  mt-14 md:mt-20 gap-6">
     
    <div class="sideImage  flex flex-col gap-3 justify-center align-center text-center md:text-left ">
     <div  class="mx-auto w-fit">
-        <img src="gst.png" class="w-40 md:w-72" />
+        <img src="gst.png" class="w-40 md:w-72 hidden md:block" />
+        <img src="offree.png" class="w-40 md:w-72 block md:hidden" />
     </div>
     <span class="font-bold text-sm  italic">Recevez votre Smartwatch</span>
     <div  class="h-1/2  w-fit mx-auto">
@@ -128,26 +136,33 @@
         <button class="bg-amber-950	 text-white w-full py-3 rounded-md mt-4 send">SEND</button>
     </div>
 
-    <div class="md:hidden flex flex-col mx-auto">
+    <div class="md:hidden flex flex-col mx-auto pb-3 form">
         <div>Remplisser vos coordonnees</div>
 
-        <div class="flex bg-gray-100 mt-4">
+        <div class="flex bg-gray-100 justify-between mt-4 rounded-lg">
             <div>
-                <input type="text" class="pl-3 bg-gray-100" placeholder="Nom de famille"/>
+                <input type="text" class="pl-3 bg-gray-100 mt-2 famille" placeholder="Nom de famille"/>
+                <input type="text" class="pl-3 bg-gray-100 mt-2 adress" placeholder="Address"/>
+                <input type="text" class="pl-3 bg-gray-100 mt-2 ville" placeholder="Ville"/>
+                <input type="number" class="pl-3 bg-gray-100 mt-2 code" placeholder="Code Portal"/>
+                <input type="text" class="pl-3 bg-gray-100 mt-2 A_mail" placeholder="Adress email"/>
             </div>
-            <button class="bg-amber-950 px-4 py-3 rounded-md"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#fff" class="bi bi-arrow-right" viewBox="0 0 16 16">
+            <button class="bg-amber-950 px-4 py-3 rounded-lg mobNext"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#fff" class="bi bi-arrow-right" viewBox="0 0 16 16">
                 <path fill-rule="evenodd" d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8"/>
               </svg></button>
+        </div>
+        <div class="text-xs box  mt-3 w-2/3 mx-auto">
+            <input type="checkbox" /> J'ais plus de 18 ans et j'acceptes les conditions
         </div>
     </div>
     
     <div class="payment w-72 bg-white mt-auto pt-6 relative rounded-md ">
-        <div class="circle-cover absolute -mt-16 ml-[35%] border-4 border-white  ">
+        <div class="circle-cover absolute -mt-16 ml-[35%] hidden md:block border-4 border-white  ">
             <div class="inner-cover font-semibold text-sm">
             </div> 
          </div>
      
-        <div class="cancel w-fit  ml-auto">
+        <div class="cancel w-fit hidden md:block  ml-auto">
             <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-x mr-4" viewBox="0 0 16 16">
                 <path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708"/>
               </svg>
@@ -163,7 +178,13 @@
         </div>
             <div class="flex justify-between w-full">
                 <input type="text" class="px-6 py-2 bg-gray-100 rounded-md w-1/3"  placeholder="MM/YY" />
-                <input type="number" class="px-6 py-2 bg-gray-100 rounded-md w-1/2"  placeholder="CVV" />
+                <input type="number" class="px-6 py-2 bg-gray-100 rounded-md w-1/2 hidden md:block"  placeholder="CVV" />
+                <div class="md:hidden px-6 py-2 bg-gray-100 rounded-md w-1/2 flex">
+                    <input type="number" class="bg-gray-100"  placeholder="CVV" />
+                    <button class="bg-amber-950 px-4 py-3 rounded-lg mobNext"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#fff" class="bi bi-arrow-right" viewBox="0 0 16 16">
+                        <path fill-rule="evenodd" d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8"/>
+                      </svg></button>
+                </div>
             </div>
             <div class="text-xs">
                 <input type="checkbox" /> J'acceptes les terms et lets conditions
@@ -172,7 +193,7 @@
             </div>
         </div>
         
-        <button class="bg-amber-950	 text-white w-full py-3 rounded-md mt-8 pay">PAY NOW</button>
+        <button class="bg-amber-950	 text-white w-full py-3 rounded-md mt-8 pay hidden md:block">PAY NOW</button>
     </div>
 
         <div class="success text-center">
@@ -228,6 +249,14 @@
 
 <script>
     const overlay = document.querySelector(".overlay")
+    const box = document.querySelector(".box")  
+    const form = document.querySelector(".form")
+    const famille = document.querySelector(".famille")
+    const adress = document.querySelector(".adress")
+    const ville= document.querySelector(".ville")
+    const code = document.querySelector(".code")
+    const A_mail = document.querySelector(".A_mail")
+    const mobNext = document.querySelector(".mobNext")
     const success = document.querySelector(".success")
     const sideImage = document.querySelector(".sideImage")
     const send = document.querySelector(".send") 
@@ -245,6 +274,8 @@
     const popInfo = document.querySelector(".popInfo");
     const start = document.querySelector(".start");
     const circle_timer = document.querySelectorAll(".inner-cover")
+
+    let mobileCount = 0;
     function countdown() {
     let timeLeft = 150;
     let timer = setInterval(function() {
@@ -295,6 +326,30 @@ pay.addEventListener("click", ()=>{
     mark2.style.display= "block"
     
     success.style.display = "block"
+})
+
+mobNext.addEventListener("click", ()=>{
+    if(mobileCount == 0){
+        famille.style.display = "none"
+        adress.style.display = "block"
+        mobileCount++
+    }else if(mobileCount == 1){
+        adress.style.display = "none"
+        ville.style.display = "block"
+        mobileCount++
+    }else if(mobileCount == 2){
+        ville.style.display = "none"
+        code.style.display = "block"
+        mobileCount++
+    }else if(mobileCount == 3){
+        code.style.display = "none"
+        A_mail.style.display = "block"
+        box.style.display = "block"
+        mobileCount++
+    }else{
+        form.style.display = "none"
+        payment.style.display = "block"
+    }
 })
 </script>
 </html>
