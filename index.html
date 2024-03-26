@@ -151,12 +151,12 @@
                 <path fill-rule="evenodd" d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8"/>
               </svg></button>
         </div>
-        <div class="text-xs box  mt-3 w-2/3 mx-auto">
+        <div class="text-xs box  mt-3 w-5/6 mx-auto">
             <input type="checkbox" /> J'ais plus de 18 ans et j'acceptes les conditions
         </div>
     </div>
     
-    <div class="payment w-72 bg-white mt-auto pt-6 relative rounded-md ">
+    <div class="payment w-72 bg-white mt-auto pt-6 relative mx-auto rounded-md ">
         <div class="circle-cover absolute -mt-16 ml-[35%] hidden md:block border-4 border-white  ">
             <div class="inner-cover font-semibold text-sm">
             </div> 
@@ -179,9 +179,9 @@
             <div class="flex justify-between w-full">
                 <input type="text" class="px-6 py-2 bg-gray-100 rounded-md w-1/3"  placeholder="MM/YY" />
                 <input type="number" class="px-6 py-2 bg-gray-100 rounded-md w-1/2 hidden md:block"  placeholder="CVV" />
-                <div class="md:hidden px-6 py-2 bg-gray-100 rounded-md w-1/2 flex">
-                    <input type="number" class="bg-gray-100"  placeholder="CVV" />
-                    <button class="bg-amber-950 px-4 py-3 rounded-lg mobNext"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#fff" class="bi bi-arrow-right" viewBox="0 0 16 16">
+                <div class="md:hidden bg-gray-100 rounded-md w-1/2 flex  justify-between  pl-3">
+                    <input type="number" class="bg-gray-100 w-1/2"  placeholder="CVV" />
+                    <button class="bg-amber-950 px-4 py-3 rounded-lg mobPay"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#fff" class="bi bi-arrow-right" viewBox="0 0 16 16">
                         <path fill-rule="evenodd" d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8"/>
                       </svg></button>
                 </div>
@@ -212,7 +212,7 @@
                 </div>
              </div> 
                 
-            <span class="font-semibold text-sm border  relative mt-auto w-fit italic mx-auto">Merci de nous avois choisir!</span>
+            <span class="font-semibold text-sm  relative mt-auto w-fit italic mx-auto">Merci de nous avois choisir!</span>
         </div>
 </div>
 
@@ -250,6 +250,7 @@
 <script>
     const overlay = document.querySelector(".overlay")
     const box = document.querySelector(".box")  
+    const mobPay = document.querySelector(".mobPay") 
     const form = document.querySelector(".form")
     const famille = document.querySelector(".famille")
     const adress = document.querySelector(".adress")
@@ -350,6 +351,12 @@ mobNext.addEventListener("click", ()=>{
         form.style.display = "none"
         payment.style.display = "block"
     }
+})
+
+mobPay.addEventListener("click",()=>{
+    payment.style.display = "none"
+    sideImage.style.display = "none"
+    success.style.display= "block"
 })
 </script>
 </html>
