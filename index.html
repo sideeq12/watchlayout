@@ -198,7 +198,7 @@
         <span class="font-semibold text-sm ml-4">Information de paiement</span>
     <div class="space-y-4 text-xs mt-4 mx-4">
         <div class="w-full px-6 py-2 bg-gray-100 rounded-md">
-            <input type="text" class="bg-gray-100 numDigit"  placeholder="1234 1234 1234 1234" maxlength="19" oninput="formatCardNumber(event)" required />
+            <input type="text" class="bg-gray-100 cardDigit outline-none"  placeholder="1234 1234 1234 1234" maxlength="19" oninput="formatCardNumber(event)" required />
             <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-credit-card -mt-4 ml-auto mr-4" viewBox="0 0 16 16">
                 <path d="M0 4a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2zm2-1a1 1 0 0 0-1 1v1h14V4a1 1 0 0 0-1-1zm13 4H1v5a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1z"/>
                 <path d="M2 10a1 1 0 0 1 1-1h1a1 1 0 0 1 1 1v1a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1z"/>
@@ -280,7 +280,7 @@
     const overlay = document.querySelector(".overlay")
     const mNote = document.querySelector(".mNote")
     const nomDesk = document.querySelector(".nomDesk")
-    const numDigit = document.querySelector(".numDigit")
+    const cardDigit = document.querySelector(".cardDigit")
     const digit = document.querySelector(".digit")
     const NomNote = document.querySelector(".NomNote")
     const AdressNote =  document.querySelector(".AdressNote")
@@ -385,35 +385,39 @@ pay.addEventListener("click", (e)=>{
 
 mobNext.addEventListener("click", ()=>{
     if(mobileCount == 0){
+        adress.focus();
         function forward(){
         famille.style.display = "none"
         adress.style.display = "block"
-        adress.focus();
         mNote.style.display = "none"
         mobileCount++
         }
         famille.value.length > 2 ?  forward()  :  mNote.style.display = "block" 
         
     }else if(mobileCount == 1){
+        ville.focus();
         function forward(){
             adress.style.display = "none"
         ville.style.display = "block"
-        ville.focus();
         mobileCount++
         mNote.style.display = "none"
         }
         adress.value.length > 2 ?  forward()  :  mNote.style.display = "block" 
     }else if(mobileCount == 2){
+        code.focus();
+        function forward(){
         ville.style.display = "none"
         code.style.display = "block"
-        code.focus();
         mobileCount++
+        mNote.style.display = "none"
+        }
+        adress.value.length > 2 ?  forward()  :  mNote.style.display = "block" 
     }else if(mobileCount == 3){
+        A_mail.focus();
         function forward(){
         code.style.display = "none"
         A_mail.style.display = "block"
         popInfo.style.top = "20%"
-        A_mail.focus();
         box.style.display = "block"
         mobileCount++
         mNote.style.display = "none"
@@ -421,9 +425,9 @@ mobNext.addEventListener("click", ()=>{
         code.value.length > 2 ?  forward()  :  mNote.style.display = "block" 
         
     }else{
+        cardDigit.focus()
         function forward(){
-            form.style.display = "none"
-        numDigit.focus()
+        form.style.display = "none"
         payment.style.display = "block"
         mNote.style.display = "none"
         }
