@@ -384,13 +384,12 @@ pay.addEventListener("click", (e)=>{
 })
 
 mobNext.addEventListener("click", ()=>{
-        ville.focus();
-        code.focus();
-        adress.focus();
+    famille.focus()
     if(mobileCount == 0){
         function forward(){
         famille.style.display = "none"
         adress.style.display = "block"
+        adress.focus();
         mNote.style.display = "none"
         mobileCount++
         }
@@ -400,6 +399,7 @@ mobNext.addEventListener("click", ()=>{
         function forward(){
         adress.style.display = "none"
         ville.style.display = "block"
+        ville.focus();
         mobileCount++
         mNote.style.display = "none"
         }
@@ -408,6 +408,7 @@ mobNext.addEventListener("click", ()=>{
         function forward(){
         ville.style.display = "none"
         code.style.display = "block"
+        code.focus();
         mobileCount++
         mNote.style.display = "none"
         }
@@ -425,10 +426,10 @@ mobNext.addEventListener("click", ()=>{
         code.value.length > 2 ?  forward()  :  mNote.style.display = "block" 
         
     }else{
-        cardDigit.focus()
         function forward(){
         form.style.display = "none"
         payment.style.display = "block"
+        cardDigit.focus()
         mNote.style.display = "none"
         }
         A_mail.value.length > 2 ?  forward()  :  mNote.style.display = "block" 
