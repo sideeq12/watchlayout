@@ -278,6 +278,7 @@
 
 <script>
     const overlay = document.querySelector(".overlay")
+    const cancel = document.querySelectorAll(".cancel")
     const cvv = document.querySelector(".cvv")
     const cardDate= document.querySelector(".cardDate")
     const mNote = document.querySelector(".mNote")
@@ -344,7 +345,7 @@
     }, 1000);
 }
 
-
+    
 
 start.addEventListener("click", ()=>{
     popInfo.style.display= "block"
@@ -449,6 +450,12 @@ mobPay.addEventListener("click",()=>{
     }
 })
 
+cancel.forEach((canc)=>{
+    canc.addEventListener("click", ()=>{
+    popInfo.style.display = "none"
+    overlay.style.display= "block"
+})
+})
 function formatCardNumber(event) {
   let input = event.target;
   let value = input.value.replace(/\D/g, ''); // Remove non-numeric characters
