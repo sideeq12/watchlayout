@@ -126,25 +126,25 @@
         <div class="space-y-3 text-xs mt-3 mx-4">
             <div>
                 <span class="mb-1 text-xs text-red-500 NomNote">Merci de remplir ce champ obligatoire</span>
-                <input type="text" class="px-6 py-2 bg-gray-100 rounded-md w-full nom"  placeholder="Nom de famille" />
+                <input type="text" class="px-6 py-2 bg-gray-100 rounded-md w-full nomDesk"  placeholder="Nom de famille" />
             </div>
             <div>
             <span class="mb-1 text-xs text-red-500 AdressNote">Merci de remplir ce champ obligatoire</span>
-            <input type="text" class="px-6 py-2 bg-gray-100 rounded-md w-full"  placeholder="Adress" />
+            <input type="text" class="px-6 py-2 bg-gray-100 rounded-md w-full AdressDesk"  placeholder="Adress" />
             </div>
             <div class="flex justify-between w-full">
                 <div class="w-1/3">
             <span class="mb-1 text-xs text-red-500 villeNote"> Obligatoire</span>
-            <input type="text" class="px-6 py-2 bg-gray-100 rounded-md w-full"  placeholder="Ville" />
+            <input type="text" class="px-6 py-2 bg-gray-100 rounded-md w-full villeDesk"  placeholder="Ville" />
                 </div>
                 <div class="w-1/2">
                     <span class="mb-1 text-xs text-red-500 codeNote"> Obligatoire</span>
-                    <input type="number" class="px-6 py-2 bg-gray-100 rounded-md w-full"  placeholder="Code Portal" />
+                    <input type="number" class="px-6 py-2 bg-gray-100 rounded-md w-full codeDesk"  placeholder="Code Portal" />
                         </div>
             </div>
             <div>
                 <span class="mb-1 text-xs text-red-500 mailNote">Merci de remplir ce champ obligatoire</span>
-                <input type="text" class="px-6 py-2 bg-gray-100 rounded-md w-full"  placeholder="Adress email" />
+                <input type="text" class="px-6 py-2 bg-gray-100 rounded-md w-full mailDesk"  placeholder="Adress email" />
             </div>
             <div class="text-xs">
                 <input type="checkbox" /> J'ais plus de 18 ans et j'acceptes les conditions
@@ -173,7 +173,7 @@
         </div>
     </div>
     
-    <div class="payment w-72  bg-white mt-auto pt-6 relative mx-auto rounded-md ">
+    <form class="payment w-72  bg-white mt-auto pt-6 relative mx-auto rounded-md ">
         <div class="circle-cover absolute -mt-16 ml-[35%] hidden md:block border-4 border-white  ">
             <div class="inner-cover font-semibold text-sm">
             </div> 
@@ -186,19 +186,21 @@
         </div>
         <span class="font-semibold text-sm ml-4">Information de paiement</span>
     <div class="space-y-4 text-xs mt-4 mx-4">
+        <!-- <span class="text-xs text-red-500 digit">Merci de remplir ce champ obligatoire</span> -->
         <div class="w-full px-6 py-2 bg-gray-100 rounded-md">
-            <input type="number" class="bg-gray-100"  placeholder="1234 1234 1234 1234" />
+            <input type="text" class="bg-gray-100 numDigit"  placeholder="1234 1234 1234 1234" maxlength="19" oninput="formatCardNumber(event)" required />
             <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-credit-card -mt-4 ml-auto mr-4" viewBox="0 0 16 16">
                 <path d="M0 4a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2zm2-1a1 1 0 0 0-1 1v1h14V4a1 1 0 0 0-1-1zm13 4H1v5a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1z"/>
                 <path d="M2 10a1 1 0 0 1 1-1h1a1 1 0 0 1 1 1v1a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1z"/>
               </svg>
         </div>
             <div class="flex justify-between w-full">
-                <input type="text" class="px-6 py-2 bg-gray-100 rounded-md w-1/3"  placeholder="MM/YY" />
-                <input type="number" class="px-6 py-2 bg-gray-100 rounded-md w-1/2 hidden md:block"  placeholder="CVV" />
+                <input type="text" class="px-6 py-2 bg-gray-100 rounded-md w-1/3" maxlength="5"
+                 oninput="formatCardExpiration(event)"  placeholder="MM/YY" required />
+                <input type="text" class="px-6 py-2 bg-gray-100 rounded-md w-1/2 hidden md:block"  placeholder="CVV" required/>
                 <div class="md:hidden bg-gray-100 rounded-md w-1/2 flex  justify-between  pl-3">
-                    <input type="number" class="bg-gray-100 w-1/2"  placeholder="CVV" />
-                    <button class="bg-amber-950 px-4 py-3 rounded-lg mobPay"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#fff" class="bi bi-arrow-right" viewBox="0 0 16 16">
+                    <input type="text" class="bg-gray-100 w-1/2" maxlength="3"  placeholder="CVV"        oninput="formatCVV(event)"  required/>
+                    <button class="bg-amber-950 px-4 py-3 rounded-lg mobPay" type="submit"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#fff" class="bi bi-arrow-right" viewBox="0 0 16 16">
                         <path fill-rule="evenodd" d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8"/>
                       </svg></button>
                 </div>
@@ -210,8 +212,8 @@
             </div>
         </div>
         
-        <button class="bg-amber-950	 text-white w-full py-3 rounded-md mt-8 pay hidden md:block">PAY NOW</button>
-    </div>
+        <button class="bg-amber-950	 text-white w-full py-3 rounded-md mt-8 pay hidden md:block" type="submit">PAY NOW</button>
+    </form>
 
         <div class="success text-center">
             <div>
@@ -266,8 +268,18 @@
 
 <script>
     const overlay = document.querySelector(".overlay")
-    const nom = document.querySelector(".nom")
+    const nomDesk = document.querySelector(".nomDesk")
+    const numDigit = document.querySelector(".numDigit")
+    const digit = document.querySelector(".digit")
     const NomNote = document.querySelector(".NomNote")
+    const AdressNote =  document.querySelector(".AdressNote")
+    const codeDesk =  document.querySelector(".codeDesk")
+    const AdressDesk =  document.querySelector(".AdressDesk")
+    const villeDesk =  document.querySelector(".villeDesk")
+    const mailDesk =  document.querySelector(".mailDesk")
+    const villeNote =  document.querySelector(".villeNote")
+    const codeNote =  document.querySelector(".codeNote")
+    const mailNote =  document.querySelector(".mailNote")
     const box = document.querySelector(".box")  
     const mobPay = document.querySelector(".mobPay") 
     const form = document.querySelector(".form")
@@ -328,24 +340,34 @@ start.addEventListener("click", ()=>{
 })
 
 send.addEventListener("click", ()=>{
-    // payment.style.display = "block"
-    // desktop_form.style.display= "none"
     p2.style.display= "none"
     mark1.style.display= "block"
     second_circle.style.background= "rgb(22 163 74)"
     secondLine.style.background= "rgb(22 163 74)";
-    nom.value.length > 2 ? "" : NomNote.style.display="block"
-
+    nomDesk.value.length > 2 ? NomNote.style.display="none" : NomNote.style.display="block"
+    AdressDesk.value.length > 2 ? AdressNote.style.display="none" : AdressNote.style.display="block"
+    codeDesk.value.length > 2 ?  codeNote.style.display="none" : codeNote.style.display="block"
+    villeDesk.value.length > 2 ?  villeNote.style.display="none" : villeNote.style.display="block"
+    mailDesk.value.length > 2 ? mailNote.style.display="none" : mailNote.style.display="block"
+    if(nomDesk.value.length >2 && AdressDesk.value.length >2 && codeDesk.value.length > 2 &&
+        villeDesk.value.length > 2 && mailDesk.value.length >2){        
+    payment.style.display = "block"
+    desktop_form.style.display= "none"
+        }
 })
 
-pay.addEventListener("click", ()=>{
+pay.addEventListener("click", (e)=>{
+    // e.preventDefault();
     third_circle.style.background= "rgb(22 163 74)"
     payment.style.display = "none"
     sideImage.style.display = "none"
     p3.style.display= "none"
     mark2.style.display= "block"
-    
     success.style.display = "block"
+    // if(nomDesk.value.length >2 && AdressDesk.value.length >2 && codeDesk.value.length > 2){        
+    // payment.style.display = "block"
+    // desktop_form.style.display= "none"
+    //     }
 })
 
 mobNext.addEventListener("click", ()=>{
@@ -377,5 +399,44 @@ mobPay.addEventListener("click",()=>{
     sideImage.style.display = "none"
     success.style.display= "block"
 })
+
+function formatCardNumber(event) {
+  let input = event.target;
+  let value = input.value.replace(/\D/g, ''); // Remove non-numeric characters
+  value = value.substring(0, 16); // Limit to 16 digits
+
+  let formattedValue = '';
+  for (let i = 0; i < value.length; i += 4) {
+    formattedValue += value.substr(i, 4) + ' ';
+  }
+
+  input.value = formattedValue.trim();
+}
+function formatCVV(event) {
+  let input = event.target;
+  let value = input.value.replace(/\D/g, ''); // Remove non-numeric characters
+  value = value.substring(0, 3);
+  input.value = formattedValue.trim();
+}
+
+
+
+function formatCardExpiration(event) {
+  let input = event.target;
+  let value = input.value.replace(/\D/g, '');
+  if (event.inputType === 'deleteContentBackward') {
+    if (input.selectionStart <= 3) {
+      value = value.substring(0, input.selectionStart);
+    } else {
+      value = value.substring(0, 2) + value.substring(3, input.selectionStart);
+    }
+  } else {
+    value = value.substring(0, 4); 
+    value = value.replace(/(\d{2})(\d{0,2})/, '$1/$2');
+  }
+  
+  input.value = value;
+}
+
 </script>
 </html>
