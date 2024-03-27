@@ -46,13 +46,20 @@
         }
         .popInfo{
             display: none;
+            position:absolute;
+            top: 10%;
+        }
+     .NomNote, .mNote, .mailNote, .AdressNote, .villeNote, .codeNote,    .ville, .code, .box, .A_mail, .adress, .payment, .success,.mark1, .mark2{
+            display: none;
+        }
+       
+        @media (max-width : 900px) {
+            .popInfo{
+            display: none;
             position: fixed;
             top: 26%;
         }
-     .NomNote, .mailNote, .AdressNote, .villeNote, .codeNote,    .ville, .code, .box, .A_mail, .adress, .payment, .success,.mark1, .mark2{
-            display: none;
         }
-        
     </style>
 
      <div class="welcover">
@@ -77,7 +84,7 @@
    </div>
 
    <!-- POP INFORMATION -->
-   <div class="popInfo h-fit mt-40 overflow-hidden md:mt-0 z-40 w-5/6
+   <div class="popInfo h-fit mt-40 overflow-x:hidden md:mt-0 z-40 w-5/6
     mx-10  md:w-full justify-center rounded-xl md:w-screen 
     justify-center align-center shadow-lg md:shadow-none bg-white md:bg-transparent">
 
@@ -157,17 +164,20 @@
     <div class="md:hidden flex flex-col mx-auto pb-3 form">
         <div>Remplisser vos coordonnees</div>
 
-        <div class="flex bg-gray-100 justify-between mt-1 rounded-lg">
-            <div>
-                <input type="text" class="pl-3 bg-gray-100 mt-2 famille outline-none" placeholder="Nom de famille"/>
-                <input type="text" class="pl-3 bg-gray-100 mt-2 adress outline-none" placeholder="Address"/>
-                <input type="text" class="pl-3 bg-gray-100 mt-2 ville outline-none" placeholder="Ville"/>
-                <input type="number" class="pl-3 bg-gray-100 mt-2 code outline-none" placeholder="Code Portal"/>
-                <input type="text" class="pl-3 bg-gray-100 mt-2 A_mail outline-none" placeholder="Adress email"/>
+        <div>
+            <span class="text-red-500 font-semibold text-xs mNote">Merci de remplir ce champ obligatoire</span>
+            <div class="flex bg-gray-100 justify-between mt-1 rounded-lg">
+                <div>
+                    <input type="text" class="pl-3 bg-gray-100 mt-2 famille outline-none" placeholder="Nom de famille"/>
+                    <input type="text" class="pl-3 bg-gray-100 mt-2 adress outline-none" placeholder="Address"/>
+                    <input type="text" class="pl-3 bg-gray-100 mt-2 ville outline-none" placeholder="Ville"/>
+                    <input type="number" class="pl-3 bg-gray-100 mt-2 code outline-none" placeholder="Code Portal"/>
+                    <input type="text" class="pl-3 bg-gray-100 mt-2 A_mail outline-none" placeholder="Adress email"/>
+                </div>
+                <button class="bg-amber-950 px-4 py-3 rounded-lg mobNext"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#fff" class="bi bi-arrow-right" viewBox="0 0 16 16">
+                    <path fill-rule="evenodd" d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8"/>
+                  </svg></button>
             </div>
-            <button class="bg-amber-950 px-4 py-3 rounded-lg mobNext"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#fff" class="bi bi-arrow-right" viewBox="0 0 16 16">
-                <path fill-rule="evenodd" d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8"/>
-              </svg></button>
         </div>
         <div class="text-xs box  mt-3 w-5/6 mx-auto">
             <input type="checkbox" /> J'ais plus de 18 ans et j'acceptes les conditions
@@ -268,6 +278,7 @@
 
 <script>
     const overlay = document.querySelector(".overlay")
+    const mNote = document.querySelector(".mNote")
     const nomDesk = document.querySelector(".nomDesk")
     const numDigit = document.querySelector(".numDigit")
     const digit = document.querySelector(".digit")
@@ -341,10 +352,7 @@ start.addEventListener("click", ()=>{
 })
 
 send.addEventListener("click", ()=>{
-    p2.style.display= "none"
     mark1.style.display= "block"
-    second_circle.style.background= "rgb(22 163 74)"
-    secondLine.style.background= "rgb(22 163 74)";
     nomDesk.value.length > 2 ? NomNote.style.display="none" : NomNote.style.display="block"
     AdressDesk.value.length > 2 ? AdressNote.style.display="none" : AdressNote.style.display="block"
     codeDesk.value.length > 2 ?  codeNote.style.display="none" : codeNote.style.display="block"
@@ -354,6 +362,10 @@ send.addEventListener("click", ()=>{
         villeDesk.value.length > 2 && mailDesk.value.length >2){        
     payment.style.display = "block"
     desktop_form.style.display= "none"
+    p2.style.display= "none"
+    mark1.style.display= "block"
+    second_circle.style.background= "rgb(22 163 74)"
+    secondLine.style.background= "rgb(22 163 74)";
         }
 })
 
@@ -373,32 +385,50 @@ pay.addEventListener("click", (e)=>{
 
 mobNext.addEventListener("click", ()=>{
     if(mobileCount == 0){
+        function forward(){
         famille.style.display = "none"
         adress.style.display = "block"
         adress.focus();
+        mNote.style.display = "none"
         mobileCount++
+        }
+        famille.value.length > 2 ?  forward()  :  mNote.style.display = "block" 
+        
     }else if(mobileCount == 1){
-        adress.style.display = "none"
+        function forward(){
+            adress.style.display = "none"
         ville.style.display = "block"
         ville.focus();
         mobileCount++
+        mNote.style.display = "none"
+        }
+        adress.value.length > 2 ?  forward()  :  mNote.style.display = "block" 
     }else if(mobileCount == 2){
         ville.style.display = "none"
         code.style.display = "block"
         code.focus();
         mobileCount++
     }else if(mobileCount == 3){
+        function forward(){
         code.style.display = "none"
         A_mail.style.display = "block"
         popInfo.style.top = "20%"
         A_mail.focus();
         box.style.display = "block"
         mobileCount++
+        mNote.style.display = "none"
+        }
+        code.value.length > 2 ?  forward()  :  mNote.style.display = "block" 
+        
     }else{
-        form.style.display = "none"
-        // popInfo.style.top = "0%"
+        function forward(){
+            form.style.display = "none"
         numDigit.focus()
         payment.style.display = "block"
+        mNote.style.display = "none"
+        }
+        A_mail.value.length > 2 ?  forward()  :  mNote.style.display = "block" 
+        
     }
 })
 
