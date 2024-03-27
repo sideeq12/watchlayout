@@ -47,7 +47,7 @@
         .popInfo{
             display: none;
             position: fixed;
-            top: 25%;
+            top: 26%;
         }
      .NomNote, .mailNote, .AdressNote, .villeNote, .codeNote,    .ville, .code, .box, .A_mail, .adress, .payment, .success,.mark1, .mark2{
             display: none;
@@ -380,14 +380,17 @@ mobNext.addEventListener("click", ()=>{
     }else if(mobileCount == 1){
         adress.style.display = "none"
         ville.style.display = "block"
+        ville.focus();
         mobileCount++
     }else if(mobileCount == 2){
         ville.style.display = "none"
         code.style.display = "block"
+        code.focus();
         mobileCount++
     }else if(mobileCount == 3){
         code.style.display = "none"
         A_mail.style.display = "block"
+        A_mail.focus();
         box.style.display = "block"
         mobileCount++
     }else{
