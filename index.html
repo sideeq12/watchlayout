@@ -158,8 +158,8 @@
 
         <div class="flex bg-gray-100 justify-between mt-4 rounded-lg">
             <div>
-                <input type="text" class="pl-3 bg-gray-100 mt-2 famille" placeholder="Nom de famille"/>
-                <input type="text" class="pl-3 bg-gray-100 mt-2 adress" placeholder="Address"/>
+                <input type="text" class="pl-3 bg-gray-100 mt-2 famille outline-none" placeholder="Nom de famille"/>
+                <input type="text" class="pl-3 bg-gray-100 mt-2 adress outline-none" placeholder="Address"/>
                 <input type="text" class="pl-3 bg-gray-100 mt-2 ville" placeholder="Ville"/>
                 <input type="number" class="pl-3 bg-gray-100 mt-2 code" placeholder="Code Portal"/>
                 <input type="text" class="pl-3 bg-gray-100 mt-2 A_mail" placeholder="Adress email"/>
@@ -306,8 +306,9 @@
     const popInfo = document.querySelector(".popInfo");
     const start = document.querySelector(".start");
     const circle_timer = document.querySelectorAll(".inner-cover")
-
-    famille.focus();
+    window.onload = function() {
+        famille.focus();
+};
     let mobileCount = 0;
     function countdown() {
     let timeLeft = 150;
