@@ -161,9 +161,9 @@
             <div>
                 <input type="text" class="pl-3 bg-gray-100 mt-2 famille outline-none" placeholder="Nom de famille"/>
                 <input type="text" class="pl-3 bg-gray-100 mt-2 adress outline-none" placeholder="Address"/>
-                <input type="text" class="pl-3 bg-gray-100 mt-2 ville" placeholder="Ville"/>
-                <input type="number" class="pl-3 bg-gray-100 mt-2 code" placeholder="Code Portal"/>
-                <input type="text" class="pl-3 bg-gray-100 mt-2 A_mail" placeholder="Adress email"/>
+                <input type="text" class="pl-3 bg-gray-100 mt-2 ville outline-none" placeholder="Ville"/>
+                <input type="number" class="pl-3 bg-gray-100 mt-2 code outline-none" placeholder="Code Portal"/>
+                <input type="text" class="pl-3 bg-gray-100 mt-2 A_mail outline-none" placeholder="Adress email"/>
             </div>
             <button class="bg-amber-950 px-4 py-3 rounded-lg mobNext"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#fff" class="bi bi-arrow-right" viewBox="0 0 16 16">
                 <path fill-rule="evenodd" d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8"/>
@@ -390,6 +390,7 @@ mobNext.addEventListener("click", ()=>{
     }else if(mobileCount == 3){
         code.style.display = "none"
         A_mail.style.display = "block"
+        popInfo.style.top = "22%"
         A_mail.focus();
         box.style.display = "block"
         mobileCount++
