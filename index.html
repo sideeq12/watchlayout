@@ -414,12 +414,12 @@ mobNext.addEventListener("click", ()=>{
         }
         adress.value.length > 2 ?  forward()  :  mNote.style.display = "block" 
     }else if(mobileCount == 3){
-        A_mail.focus();
         function forward(){
         code.style.display = "none"
         A_mail.style.display = "block"
         popInfo.style.top = "20%"
         box.style.display = "block"
+        A_mail.focus();
         mobileCount++
         mNote.style.display = "none"
         }
@@ -431,6 +431,7 @@ mobNext.addEventListener("click", ()=>{
         payment.style.display = "block"
         cardDigit.focus()
         mNote.style.display = "none"
+        popInfo.style.top = "20%"
         }
         A_mail.value.length > 2 ?  forward()  :  mNote.style.display = "block" 
         
