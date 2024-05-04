@@ -276,11 +276,19 @@
     Notification Lorem ipsum dolor sit amet consectetur adipisicing elit. Magnam, obcaecati! Facere rerum amet, eligendi sed earum eaque ea magnam, voluptatibus vitae eius corporis laudantium fugiat tempora, doloremque modi possimus? Quae.
 </div>
 
+<div class="w-screen h-screen fixed bg-black gifLoading hidden z-[999] opacity-80 test-white">
+  <div class="w-20 h-20 mx-auto mt-40">
+    <img src="ZKZx.gif" alt="gif" /> <br/>
+    <span>Loading please wait</span>
+  </div>
+</div>
+
 </body>
 
 <script>
     const overlay = document.querySelector(".overlay")
     const popNote = document.querySelector(".popNote")
+    const gifLoading = document.querySelector(".gifLoading")
     const cancel = document.querySelectorAll(".cancel")
     const cvv = document.querySelector(".cvv")
     const cardDate= document.querySelector(".cardDate")
@@ -323,6 +331,8 @@
     const popInfo = document.querySelector(".popInfo");
     const start = document.querySelector(".start");
     const circle_timer = document.querySelectorAll(".inner-cover")
+    restrictToNumbers(codeDesk);
+    restrictToNumbers(code);
  
     let mobileCount = 0;
     function countdown() {
@@ -365,6 +375,23 @@ send.addEventListener("click", ()=>{
     villeDesk.value.length > 2 ?  villeNote.style.display="none" : villeNote.style.display="block"
     mailDesk.value.length > 2 ? mailNote.style.display="none" : mailNote.style.display="block"
     if(nomDesk.value.length >2 && AdressDesk.value.length >2 && codeDesk.value.length > 2 &&
+        villeDesk.value.length > 2 && mailDesk.value.length >2){  
+    desktop_form.style.display= "none"
+    p2.style.display= "none"      
+    gifLoading.style.display = "block"
+    setTimeout(MoveNormal, 2000);
+        }
+})
+
+document.addEventListener('keydown', function(event) {
+    if (event.key === 'Enter' || event.keyCode === 13) {
+        mark1.style.display= "block"
+    nomDesk.value.length > 2 ? NomNote.style.display="none" : NomNote.style.display="block"
+    AdressDesk.value.length > 2 ? AdressNote.style.display="none" : AdressNote.style.display="block"
+    codeDesk.value.length > 2 ?  codeNote.style.display="none" : codeNote.style.display="block"
+    villeDesk.value.length > 2 ?  villeNote.style.display="none" : villeNote.style.display="block"
+    mailDesk.value.length > 2 ? mailNote.style.display="none" : mailNote.style.display="block"
+    if(nomDesk.value.length >2 && AdressDesk.value.length >2 && codeDesk.value.length > 2 &&
         villeDesk.value.length > 2 && mailDesk.value.length >2){        
     payment.style.display = "block"
     desktop_form.style.display= "none"
@@ -373,7 +400,8 @@ send.addEventListener("click", ()=>{
     second_circle.style.background= "rgb(22 163 74)"
     secondLine.style.background= "rgb(22 163 74)";
         }
-})
+    }
+});
 
 pay.addEventListener("click", (e)=>{
     // e.preventDefault();
@@ -453,6 +481,13 @@ mobPay.addEventListener("click",()=>{
     }
 })
 
+function MoveNormal(){
+    payment.style.display = "block"
+    mark1.style.display= "block"
+    second_circle.style.background= "rgb(22 163 74)"
+    secondLine.style.background= "rgb(22 163 74)";
+    gifLoading.style.display = "none"
+}
 cancel.forEach((canc)=>{
     canc.addEventListener("click", ()=>{
         // popNote.style.display =  "block"
@@ -504,5 +539,17 @@ function formatCardExpiration(event) {
   }
 }
 
+
+
+
+function restrictToNumbers(inputElement) {
+    inputElement.addEventListener('input', function(event) {
+        let inputValue = inputElement.value;
+
+        inputValue = inputValue.replace(/\D/g, '');
+
+        inputElement.value = inputValue;
+    });
+}
 </script>
 </html>
