@@ -77,6 +77,9 @@
     const start = document.querySelector('.start')
     const popStart = document.querySelector('.popStart')
     const mFamille = document.querySelector('.mFamille')
+    let screenHeight = window.screen.height;
+    let screenWidth = window.screen.width;
+
     let mobileCount = 0;
 //     function countdown() {
 //     let timeLeft = 150;
@@ -107,6 +110,9 @@ start.addEventListener("click", ()=>{
     popStart.style.display= "block"
     mainfraim.style.display= "none"
     mFamille.focus()
+    if(screenHeight < 1600 ){
+    popStart.style.transform= "translateY(120px)"
+    }
     // countdown();
 })
 
