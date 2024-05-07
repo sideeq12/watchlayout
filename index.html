@@ -10,30 +10,33 @@
 <style>
 .upper{
     background-image: url("background.png");
-    object-fit: cover;
+    background-size: cover;  
+     filter: blur(4px); /* Adjust the blur amount as needed */
+        -webkit-backdrop-filter: blur(10px); 
 }
 </style>
 
 <div class="whole">
-    <div class="upper h-screen w-screen relative flex flex-col pt-20 md:pt-20 align-middle   text-center ">
-            <div class="w-1/2 md:w-1/3 mx-auto">
-                <img src="offree.png" />
-            </div>
-                <div class=" md:w-1/3 mx-auto mt-4">
-                <img src="watch.png" class="h-80 mx-auto" />
-            </div>
-            <div class="w md:w-1/3 mx-auto -mt-8">
-                <img src="eclipe.png" class="" />
-            </div>
-             <div class="w-1/2 lg:w-1/4 mx-auto -mt-40">
-                <img src="Frame.png" class="h-20 ml-auto lg:mr-4" />
-            </div>
-            <div class="start bg-[#A57A5C] rounded-lg drop-shadow-lg mx-auto mt-3 text-white w-1/2 lg:w-1/4 py-3">
-                    JE CRAQUE
-            </div>
-            <span class="mx-auto mt-2">Recevez votre Smartwatch</span>
+    <div class="upper absolute top-0 w-screen h-screen  backdrop-blur-md  -z-10">
     </div>
-
+    <div class="h-screen w-screen relative flex flex-col pt-20 md:pt-20 align-middle   text-center ">
+        <div class="w-1/2 md:w-1/3 mx-auto">
+            <img src="offree.png" />
+        </div>
+            <div class=" md:w-1/3 mx-auto mt-4">
+            <img src="watch.png" class="h-80 mx-auto" />
+        </div>
+        <div class="w md:w-1/3 mx-auto -mt-8">
+            <img src="eclipe.png" class="" />
+        </div>
+         <div class="w-1/2 lg:w-1/4 mx-auto -mt-40">
+            <img src="Frame.png" class="h-20 ml-auto lg:mr-4" />
+        </div>
+        <div class="start bg-[#694B35] rounded-lg drop-shadow-lg mx-auto mt-3 text-white w-1/2 lg:w-1/4 py-3">
+                JE CRAQUE
+        </div>
+        <span class="mx-auto mt-2">Recevez votre Smartwatch</span>
+</div>
 </div>
 
 </body>
