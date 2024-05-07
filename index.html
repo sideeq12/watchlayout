@@ -12,14 +12,14 @@
     background-image: url("background.png");
     background-size: cover;  
      filter: blur(4px); /* Adjust the blur amount as needed */
-        -webkit-backdrop-filter: blur(10px); 
+     -webkit-backdrop-filter: blur(10px); 
 }
 </style>
 
 <div class="whole">
     <div class="upper absolute top-0 w-screen h-screen  backdrop-blur-md  -z-10">
     </div>
-    <div class="h-screen w-screen relative flex flex-col pt-20 md:pt-20 align-middle   text-center ">
+    <div class="mainfraim  h-screen w-screen relative flex flex-col pt-20 md:pt-20 align-middle   text-center ">
         <div class="w-1/2 md:w-1/3 mx-auto">
             <img src="offree.png" />
         </div>
@@ -37,118 +37,138 @@
         </div>
         <span class="mx-auto mt-2">Recevez votre Smartwatch</span>
 </div>
+<div class="hidden popStart bg-white lg:bg-none rounded-lg drop-shadow-lg p-4 w-5/6 flex mt-10 mt-32 grid grid-cols-1 lg:grid-cols-2 lg:w-1/2 mx-auto">
+   <div class="flex flex-col">
+    <div class="">
+        <img src="ex.png" />
+    </div>
+    <span class="mx-auto lg:mr-auto">
+                Recevez votre Smartwatch
+    </span>
+    <div class="mx-auto lg:mr-auto">
+        <img src="watch.png" class="h-60"/>
+    </div>
+    <div class="mx-auto -mt-8">
+        <img src="eclipe.png" class="" />
+    </div>
+     <div class="w-1/2 lg:w-1/4 ml-auto mr-12 -mt-32">
+        <img src="Frame.png" class="h-16 md:h-20 ml-auto lg:mr-4" />
+    </div>
+   </div>
+   <div class="inputList">
+
+   </div>
+</div>
 </div>
 
 </body>
 
 <script>
-
-  
-    // restrictToNumbers(codeDesk);
-    // restrictToNumbers(code);
- 
+    const mainfraim = document.querySelector(".mainfraim")
+    const start = document.querySelector('.start')
+    const popStart = document.querySelector('.popStart')
     let mobileCount = 0;
-    function countdown() {
-    let timeLeft = 150;
-    let timer = setInterval(function() {
-        let minutes = Math.floor(timeLeft / 60);
-        let seconds = timeLeft % 60;
-        let formattedMinutes = minutes < 10 ? "0" + minutes : minutes;
-        let formattedSeconds = seconds < 10 ? "0" + seconds : seconds;
+//     function countdown() {
+//     let timeLeft = 150;
+//     let timer = setInterval(function() {
+//         let minutes = Math.floor(timeLeft / 60);
+//         let seconds = timeLeft % 60;
+//         let formattedMinutes = minutes < 10 ? "0" + minutes : minutes;
+//         let formattedSeconds = seconds < 10 ? "0" + seconds : seconds;
 
-        circle_timer.forEach((circ)=>{
-            circ.textContent = formattedMinutes + ":" + formattedSeconds;
-        })
+//         circle_timer.forEach((circ)=>{
+//             circ.textContent = formattedMinutes + ":" + formattedSeconds;
+//         })
 
-        timeProgress.forEach((prog)=>{
-            prog.style.background = `conic-gradient(white ${360-(timeLeft * (12/5))}deg, red 0deg)`;
-        })
-        timeLeft--;
+//         timeProgress.forEach((prog)=>{
+//             prog.style.background = `conic-gradient(white ${360-(timeLeft * (12/5))}deg, red 0deg)`;
+//         })
+//         timeLeft--;
 
-        if (timeLeft < 0) {
-            clearInterval(timer);
-        }
-    }, 1000);
-}
+//         if (timeLeft < 0) {
+//             clearInterval(timer);
+//         }
+//     }, 1000);
+// }
 
     
 
 start.addEventListener("click", ()=>{
-    popInfo.style.display= "block"
-    overlay.style.display= "none"
-    famille.focus();
-    countdown();
+    popStart.style.display= "block"
+    mainfraim.style.display= "none"
+    // famille.focus();
+    // countdown();
 })
 
-function MoveNormal(){
-    payment.style.display = "block"
-    mark1.style.display= "block"
-    second_circle.style.background= "rgb(22 163 74)"
-    secondLine.style.background= "rgb(22 163 74)";
-    gifLoading.style.display = "none"
-}
-cancel.forEach((canc)=>{
-    canc.addEventListener("click", ()=>{
-        // popNote.style.display =  "block"
-    popInfo.style.display = "none"
-    overlay.style.display= "block"
-})
-})
-function formatCardNumber(event) {
-  let input = event.target;
-  let value = input.value.replace(/\D/g, ''); // Remove non-numeric characters
-  value = value.substring(0, 16); // Limit to 16 digits
+// function MoveNormal(){
+//     payment.style.display = "block"
+//     mark1.style.display= "block"
+//     second_circle.style.background= "rgb(22 163 74)"
+//     secondLine.style.background= "rgb(22 163 74)";
+//     gifLoading.style.display = "none"
+// }
+// cancel.forEach((canc)=>{
+//     canc.addEventListener("click", ()=>{
+//         // popNote.style.display =  "block"
+//     popInfo.style.display = "none"
+//     overlay.style.display= "block"
+// })
+// })
+// function formatCardNumber(event) {
+//   let input = event.target;
+//   let value = input.value.replace(/\D/g, ''); // Remove non-numeric characters
+//   value = value.substring(0, 16); // Limit to 16 digits
 
-  let formattedValue = '';
-  for (let i = 0; i < value.length; i += 4) {
-    formattedValue += value.substr(i, 4) + ' ';
-  }
+//   let formattedValue = '';
+//   for (let i = 0; i < value.length; i += 4) {
+//     formattedValue += value.substr(i, 4) + ' ';
+//   }
 
-  input.value = formattedValue.trim();
-  if(input.value.length == 19){
-    cardDate.focus()
-  }
-}
-function formatCVV(event) {
-  let input = event.target;
-  let value = input.value.replace(/\D/g, ''); // Remove non-numeric characters
-  value = value.substring(0, 3);
-  input.value = formattedValue.trim();
-}
+//   input.value = formattedValue.trim();
+//   if(input.value.length == 19){
+//     cardDate.focus()
+//   }
+// }
+// function formatCVV(event) {
+//   let input = event.target;
+//   let value = input.value.replace(/\D/g, ''); // Remove non-numeric characters
+//   value = value.substring(0, 3);
+//   input.value = formattedValue.trim();
+// }
 
 
 
-function formatCardExpiration(event) {
-  let input = event.target;
-  let value = input.value.replace(/\D/g, '');
-  if (event.inputType === 'deleteContentBackward') {
-    if (input.selectionStart <= 3) {
-      value = value.substring(0, input.selectionStart);
-    } else {
-      value = value.substring(0, 2) + value.substring(3, input.selectionStart);
-    }
-  } else {
-    value = value.substring(0, 4); 
-    value = value.replace(/(\d{2})(\d{0,2})/, '$1/$2');
-  }
+// function formatCardExpiration(event) {
+//   let input = event.target;
+//   let value = input.value.replace(/\D/g, '');
+//   if (event.inputType === 'deleteContentBackward') {
+//     if (input.selectionStart <= 3) {
+//       value = value.substring(0, input.selectionStart);
+//     } else {
+//       value = value.substring(0, 2) + value.substring(3, input.selectionStart);
+//     }
+//   } else {
+//     value = value.substring(0, 4); 
+//     value = value.replace(/(\d{2})(\d{0,2})/, '$1/$2');
+//   }
   
-  input.value = value;
-  if(value.length == 5){
-    cvv.focus()
-  }
-}
+//   input.value = value;
+//   if(value.length == 5){
+//     cvv.focus()
+//   }
+// }
 
 
 
 
-function restrictToNumbers(inputElement) {
-    inputElement.addEventListener('input', function(event) {
-        let inputValue = inputElement.value;
+// function restrictToNumbers(inputElement) {
+    // inputElement.addEventListener('input', function(event) {
+    //     let inputValue = inputElement.value;
 
-        inputValue = inputValue.replace(/\D/g, '');
+    //     inputValue = inputValue.replace(/\D/g, '');
 
-        inputElement.value = inputValue;
-    });
-}
+    //     inputElement.value = inputValue;
+    // });
+// }
 </script>
 </html>
