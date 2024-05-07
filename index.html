@@ -59,9 +59,22 @@
    <div class="inputList lg:hidden mx-auto w-5/6 mt-4">
     <span>Remplissez voz cordonnes</span>
  <div class="flex w-">
-    <input type="text" placeholder="Nom de famille" required class="mFamille w-3/4 rounded-l-lg px-4 outline-none bg-gray-50" />
+    <input type="text" placeholder="Nom de famille"
+     required class="mFamille w-3/4 rounded-l-lg px-4 outline-none bg-gray-50" />
+     
+    <input type="text" placeholder="Adress"
+    required class="mAdresse hidden w-3/4 rounded-l-lg px-4 outline-none bg-gray-50" />
+    
+    <input type="text" placeholder="Ville"
+     required class="mVille hidden w-3/4 rounded-l-lg px-4 outline-none bg-gray-50" />
+     
+    <input type="text" placeholder="Code de Portal"
+    required class="mCode w-3/4 hidden rounded-l-lg px-4 outline-none bg-gray-50" />
+    
+    <input type="text" placeholder="Adress Email"
+     required class="mEmail hidden w-3/4 rounded-l-lg px-4 outline-none bg-gray-50" />
 
-    <div class="bg-[#694B35] py-3 px-4 rounded-r-lg"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" 
+    <div class="bg-[#694B35] py-3 px-4 rounded-r-lg forNext"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" 
         fill="white" class="bi bi-arrow-right" viewBox="0 0 16 16">
         <path fill-rule="evenodd" d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8"/>
       </svg></div>
@@ -77,6 +90,11 @@
     const start = document.querySelector('.start')
     const popStart = document.querySelector('.popStart')
     const mFamille = document.querySelector('.mFamille')
+    const mAdresse = document.querySelector('.mAdresse')
+    const mCode = document.querySelector('.mCode')
+    const mEmail = document.querySelector('.mEmail')
+    const mVille = document.querySelector('.mVille')
+    const forNext = document.querySelector('.forNext')
     let screenHeight = window.screen.height;
     let screenWidth = window.screen.width;
 
@@ -105,7 +123,7 @@
 // }
 
     
-
+let count =0;
 start.addEventListener("click", ()=>{
     popStart.style.display= "block"
     mainfraim.style.display= "none"
@@ -117,6 +135,26 @@ start.addEventListener("click", ()=>{
     popStart.style.transform= "translateY(150px)"
     }
     // countdown();
+})
+
+forNext.addEventListener("click", ()=>{
+    if(count == 0){
+        mFamille.style.display= "none"
+    mAdresse.style.display= "block"
+    count = count+1;
+    }else if(count == 1){
+        mAdresse.style.display= "none"
+    mVille.style.display= "block"
+    count++;
+    }else    if(count == 2){
+    mVille.style.display= "none"
+    mCode.style.display= "block"
+    count++;
+    }else if(count == 3){
+        mCode.style.display= "none"
+    mEmail.style.display= "block"
+    count++;
+    }
 })
 
 // function MoveNormal(){
