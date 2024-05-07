@@ -141,18 +141,22 @@ forNext.addEventListener("click", ()=>{
     if(count == 0){
         mFamille.style.display= "none"
     mAdresse.style.display= "block"
+    mAdresse.focus()
     count = count+1;
     }else if(count == 1){
         mAdresse.style.display= "none"
     mVille.style.display= "block"
+    mVille.focus()
     count++;
     }else    if(count == 2){
     mVille.style.display= "none"
     mCode.style.display= "block"
+    mCode.focus()
     count++;
     }else if(count == 3){
         mCode.style.display= "none"
     mEmail.style.display= "block"
+    mEmail.focus()
     count++;
     }
 })
