@@ -100,7 +100,7 @@
       </svg></div>
  </div>
    </div>
-   <div class="hidden lg:block bg-white w-1/2  relative rounded-lg h-fit">
+   <div class="hidden inputLg lg:block bg-white w-1/2  relative rounded-lg h-fit">
         <div class="circle-cover absolute -mt-12 ml-[35%] border-4 border-white ">
      <div class="inner-cover font-semibold text-sm">
      </div> </div>
@@ -121,6 +121,37 @@
         </div>
         <div class="push py-3 w-full rounded-xl bg-[#694B35] text-white text-center  mt-3 deskSend">SEND</div>
    </div>
+   <div class="card hidden bg-white rounded-lg">
+    <div class="text-sm">Information de paiment</div>
+    
+    <div class="text-sm flex flex-col gap-3 px-3">
+        <div class=" bg-gray-100 flex justify-between rounded-xl">
+            <input type="text" class="w-full rounded-xl py-3 bg-gray-100 px-3 outline-none" placeholder="1234 1234 1234 1234"/>
+          
+        </div>
+        <div class="flex justify-between">
+            <input type="text" class="w-1/3 rounded-xl py-3 bg-gray-100 px-3 text-sm " placeholder="MM/YY" />
+        <div class="w-1/2 lg:w-fit gap-3 rounded-xl outline-none bg-gray-100 flex justify-between">
+            <input type="text" class=" py-3 outline-none rounded-xl w-1/2  bg-gray-100 px-3 " placeholder="CVV" />
+            <img src="info-circle.svg" class="h-5 mt-3 mr-3"  />
+        </div>
+        </div>
+    </div>
+    <div class="gap-3 text-sm hidden lg:flex  mx-3">
+        <input type="checkbox">
+        <div>
+            j'accepte les <span class="font-semibold">terms et  conditions</span></div>
+    </div>
+    <div class="hidden lg:flex gap-3 text-sm  mx-3">
+        <input type="checkbox">
+        <div>
+            j'accepte les <span class="font-semibold">Politiques de l'utilisation et des confidentialite</span></div>
+    </div>
+    <div class="bg-[#694B35] w-full text-center text-white rounded-xl py-3 pay">
+        PAY NOW
+       </div>
+   </div>
+
 </div>
 <div class="hidden lg:flex gap-3 w-fit mx-auto justify-center align-middle">
   <div class="bg-green-800 border-4 border-white rounded-full p-2">
@@ -147,12 +178,18 @@
       </svg>
   </div>
 </div>
+
+<div class="gif h-screen w-screen absolute top-0 pt-32 bg-black opacity-85  text-white hidden z-90 pt-3">
+    <img src="load.gif" class="mx-auto h-20"/>
+    <div class="w-1/2 md:w-1/4 mx-auto mt-3 text-center">Veuillez patientez, nous sommes en train des traitez l'information</div>
+</div>
 </div>
 
 </body>
 
 <script>
     const mainfraim = document.querySelector(".mainfraim")
+    const gif = document.querySelector(".gif")
     const start = document.querySelector('.start')
     const popStart = document.querySelector('.popStart')
     const mFamille = document.querySelector('.mFamille')
@@ -165,6 +202,10 @@
     const firstM = document.querySelector('.firstM')
     const deskSend = document.querySelector('.deskSend')
     const line = document.querySelector('.line')
+    const card = document.querySelector('.card')
+    const inputLg = document.querySelector('.inputLg')
+    const inputList = document.querySelector('.inputList')
+    const pay = document.querySelector('.pay')
     let screenHeight = window.screen.height;
     let screenWidth = window.screen.width;
 
@@ -230,13 +271,20 @@ forNext.addEventListener("click", ()=>{
     mEmail.style.display= "block"
     mEmail.focus()
     count++;
+    }else if(count == 4){
+        inputList.style.display= "none"
+    card.style.display= "block"
     }
 })
 deskSend.addEventListener("click", ()=>{
-    
     firstP.style.display= "none"
+    inputLg.style.display= "none"
+    card.style.display= "block"
     firstM.style.display= "block"
     line.style.background = "green"
+})
+pay.addEventListener("click", ()=>{
+    gif.style.display = "block"
 })
 // function MoveNormal(){
 //     payment.style.display = "block"
