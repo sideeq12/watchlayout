@@ -83,6 +83,7 @@
           </svg>
     </div>
     <span>Remplissez voz cordonnes</span>
+    <div class="mError text-red-500 text-xs hidden">Merci de remplir ce champ obligatoire</div>
  <div class="flex w-">
     <input type="text" placeholder="Nom de famille"
      required class="mFamille w-3/4 rounded-l-lg px-4 outline-none bg-gray-50" />
@@ -199,7 +200,7 @@
 
     <span class="mx-auto mt-2">Merci de nous avoir chosis!</span>
 </div>
-<div class="hidden lg:flex gap-3 w-fit mx-auto justify-center align-middle">
+<div class="hidden progBar  gap-3 w-fit mx-auto justify-center align-middle">
   <div class="bg-green-800 border-4 border-white rounded-full p-2">
     <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="white" class="bi bi-check" viewBox="0 0 16 16">
         <path d="M10.97 4.97a.75.75 0 0 1 1.07 1.05l-3.99 4.99a.75.75 0 0 1-1.08.02L4.324 8.384a.75.75 0 1 1 1.06-1.06l2.094 2.093 3.473-4.425z"/>
@@ -236,6 +237,7 @@
 
 <script>
     const mainfraim = document.querySelector(".mainfraim")
+    const mError = document.querySelector(".mError")
     const gif = document.querySelector(".gif")
     const start = document.querySelector('.start')
     const popStart = document.querySelector('.popStart')
@@ -258,6 +260,7 @@
     const secP = document.querySelector('.secP')
     const secM = document.querySelector('.secM')
     const close = document.querySelectorAll('.close')
+    const progBar= document.querySelector('.progBar')
     let screenHeight = window.screen.height;
     let screenWidth = window.screen.width;
 
@@ -292,47 +295,80 @@ let count =0;
 start.addEventListener("click", ()=>{
     popStart.style.display= "flex"
     mainfraim.style.display= "none"
-    // alert(screenHeight)
     mFamille.focus()
     if(screenHeight <= 820 && screenWidth < 900){
     popStart.style.transform= "translateY(-110px)"
     }else if(screenHeight > 820 && screenWidth < 900){
     popStart.style.transform= "translateY(150px)"
     }
+    if(screenWidth > 900){
+        progBar.style.display = "flex"
+    }
     // countdown();
 })
 
 forNext.addEventListener("click", ()=>{
     if(count == 0){
-        mFamille.style.display= "none"
+        if(mFamille.value.length < 2){
+            mError.style.display = "block"
+            mFamille.focus()
+        }else{
+            mFamille.style.display= "none"
     mAdresse.style.display= "block"
     mAdresse.focus()
     count = count+1;
+    mError.style.display = "none"
+        }
+  
     }else if(count == 1){
-        mAdresse.style.display= "none"
+        if(mAdresse.value.length < 2){
+            mError.style.display = "block"
+            mAdresse.focus()
+        }else{
+            mAdresse.style.display= "none"
     mVille.style.display= "block"
     mVille.focus()
     count++;
+    mError.style.display = "none"
+        }
     }else    if(count == 2){
-    mVille.style.display= "none"
+        if(mVille.value.length < 2){
+            mError.style.display = "block"
+            mVille.focus()
+        }else{
+      mVille.style.display= "none"
     mCode.style.display= "block"
     mCode.focus()
     count++;
+    mError.style.display = "none"
+        }
     }else if(count == 3){
-        mCode.style.display= "none"
+        if(mCode.value.length < 2){
+            mError.style.display = "block"
+            mCode.focus()
+        }else{
+            mCode.style.display= "none"
     mEmail.style.display= "block"
     mEmail.focus()
     count++;
+    mError.style.display = "none"
+        }
+       
     }else if(count == 4){
-        inputList.style.display= "none"
+        if(mEmail.value.length < 2){
+            mError.style.display = "block"
+            mEmail.focus()
+        }else{
+            inputList.style.display= "none"
     card.style.display= "block"
-    digits.focus()
-
+    digits.focus()      
     if(screenHeight <= 820 && screenWidth < 900){
     popStart.style.transform= "translateY(-80px)"
     }else if(screenHeight > 820 && screenWidth < 900){
     popStart.style.transform= "translateY(150px)"
     }
+        }
+
     }
 })
 deskSend.addEventListener("click", ()=>{
@@ -350,7 +386,11 @@ pay.addEventListener("click", ()=>{
 close.forEach((cl)=>{
     cl.addEventListener("click", ()=>{
         success.style.display = "none";
+        popStart.style.display = "none"
         mainfraim.style.display = "flex"
+         if(screenWidth > 900){
+        progBar.style.display = "none"
+    }
     })
 })
 
