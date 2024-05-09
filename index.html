@@ -8,13 +8,12 @@
 </head>
 <body>
 <style>
-          .circle-cover{
+ .circle-cover{
             height: 85px;
             width: 85px;
             border : 8px solid white;
             border-radius: 100%;
             padding: 5px;
-            background-color: red;
         }
         .inner-cover{
             background-color: white;
@@ -26,7 +25,6 @@
             align-items: center;
             color: orangered;
         }
-
 .upper{
     background-image: url("background.png");
     background-size: cover;  
@@ -107,9 +105,10 @@
  </div>
    </div>
    <div class="hidden inputLg lg:block bg-white w-1/2  relative rounded-lg h-fit">
-        <div class="circle-cover absolute -mt-12 ml-[35%] border-4 border-white ">
-     <div class="inner-cover font-semibold text-sm">
-     </div> </div>
+     <div class="circle-cover absolute -mt-10 ml-[40%] border-8 border-white  ">
+        <div class="inner-cover font-semibold text-sm">
+        </div> 
+     </div>
      <div class="w-fit h-fit absolute top-10 right-6 close">
         <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" class="bi bi-x" viewBox="0 0 16 16">
             <path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708"/>
@@ -148,13 +147,17 @@
     
     <div class="text-sm flex flex-col gap-3 px-3">
         <div class=" bg-gray-100 flex justify-between rounded-xl">
-            <input type="text" class="w-full rounded-xl py-3 bg-gray-100 px-3 outline-none digit" placeholder="1234 1234 1234 1234"/>
+            <input type="text" class="w-full rounded-xl py-3 bg-gray-100 px-3 outline-none digit"
+             placeholder="1234 1234 1234 1234" maxlength="19" oninput="formatCardNumber(event)"/>
           
         </div>
         <div class="flex justify-between">
-            <input type="text" class="w-1/3 rounded-xl py-3 bg-gray-100 px-3 text-sm " placeholder="MM/YY" />
+            <input type="text" class="w-1/3 rounded-xl py-3 bg-gray-100 px-3 text-sm "
+            maxlength="5"
+                 oninput="formatCardExpiration(event)"  placeholder="MM/YY" required />
         <div class="w-1/2 lg:w-fit gap-3 rounded-xl outline-none bg-gray-100 flex justify-between">
-            <input type="text" class=" py-3 outline-none rounded-xl w-1/2  bg-gray-100 px-3 " placeholder="CVV" />
+            <input type="text" class=" py-3 outline-none rounded-xl w-1/2  bg-gray-100 px-3 " 
+            maxlength="3"  placeholder="CVV"        oninput="formatCVV(event)" />
             <img src="info-circle.svg" class="h-5 mt-3 mr-3"  />
         </div>
         </div>
@@ -277,36 +280,37 @@
     const secM = document.querySelector('.secM')
     const close = document.querySelectorAll('.close')
     const progBar= document.querySelector('.progBar')
+    
+    const timeProgress = document.querySelectorAll(".circle-cover");
+    const circle_timer = document.querySelectorAll(".inner-cover")
+    restrictToNumbers(mCode)
+    restrictToNumbers(Code)
+
     let screenHeight = window.screen.height;
     let screenWidth = window.screen.width;
+  function countdown() {
+    let timeLeft = 150;
+    let timer = setInterval(function() {
+        let minutes = Math.floor(timeLeft / 60);
+        let seconds = timeLeft % 60;
+        let formattedMinutes = minutes < 10 ? "0" + minutes : minutes;
+        let formattedSeconds = seconds < 10 ? "0" + seconds : seconds;
 
-    const circle_timer = document.querySelectorAll(".inner-cover")
- 
- let mobileCount = 0;
- function countdown() {
- let timeLeft = 150;
- let timer = setInterval(function() {
-     let minutes = Math.floor(timeLeft / 60);
-     let seconds = timeLeft % 60;
-     let formattedMinutes = minutes < 10 ? "0" + minutes : minutes;
-     let formattedSeconds = seconds < 10 ? "0" + seconds : seconds;
+        circle_timer.forEach((circ)=>{
+            circ.textContent = formattedMinutes + ":" + formattedSeconds;
+        })
 
-     circle_timer.forEach((circ)=>{
-         circ.textContent = formattedMinutes + ":" + formattedSeconds;
-     })
+        timeProgress.forEach((prog)=>{
+            prog.style.background = `conic-gradient(white ${360-(timeLeft * (12/5))}deg, red 0deg)`;
+        })
+        timeLeft--;
 
-     timeProgress.forEach((prog)=>{
-         prog.style.background = `conic-gradient(white ${360-(timeLeft * (12/5))}deg, red 0deg)`;
-     })
-     timeLeft--;
-
-     if (timeLeft < 0) {
-         clearInterval(timer);
-     }
- }, 1000);
+        if (timeLeft < 0) {
+            clearInterval(timer);
+        }
+    }, 1000);
 }
 
-    
 let count =0;
 start.addEventListener("click", ()=>{
     popStart.style.display= "flex"
@@ -320,7 +324,7 @@ start.addEventListener("click", ()=>{
     if(screenWidth > 900){
         progBar.style.display = "flex"
     }
-    // countdown();
+    countdown();
 })
 
 forNext.addEventListener("click", ()=>{
@@ -382,10 +386,7 @@ forNext.addEventListener("click", ()=>{
     popStart.style.transform= "translateY(-80px)"
     }else if(screenHeight > 820 && screenWidth < 900){
     popStart.style.transform= "translateY(150px)"
-    }
-        }
-
-    }
+    }}  }
 })
 deskSend.addEventListener("click", ()=>{
   famille.value.length > 2 ? fi.style.display = "none" : fi.style.display = "block" 
@@ -405,6 +406,89 @@ pay.addEventListener("click", ()=>{
     gif.style.display = "block"
     setTimeout(myFunction, 2000);
 })
+
+document.addEventListener('keydown', (event) =>{
+  if (event.keyCode === 13) {
+    if(screenWidth > 1200){
+          famille.value.length > 2 ? fi.style.display = "none" : fi.style.display = "block" 
+  Adress.value.length > 2 ? sec.style.display = "none" : sec.style.display = "block" 
+  Ville.value.length > 2 && Code.value.length > 2 ? thi.style.display = "none" : thi.style.display = "block"  
+  Email.value.length > 2 ? fout.style.display = "none" : fout.style.display = "block" 
+if(famille.value.length > 2 && Adress.value.length > 2 && Code.value.length > 2 && Ville.value.length > 2 && Email.value.length > 2){
+    firstP.style.display= "none"
+    inputLg.style.display= "none"
+    card.style.display= "block"
+    firstM.style.display= "block"
+    line.style.background = "green"
+    digits.focus()
+}
+    }else{
+if(count == 0){
+        if(mFamille.value.length < 2){
+            mError.style.display = "block"
+            mFamille.focus()
+        }else{
+            mFamille.style.display= "none"
+    mAdresse.style.display= "block"
+    mAdresse.focus()
+    count = count+1;
+    mError.style.display = "none"
+        }
+  
+    }else if(count == 1){
+        if(mAdresse.value.length < 2){
+            mError.style.display = "block"
+            mAdresse.focus()
+        }else{
+            mAdresse.style.display= "none"
+    mVille.style.display= "block"
+    mVille.focus()
+    count++;
+    mError.style.display = "none"
+        }
+    }else    if(count == 2){
+        if(mVille.value.length < 2){
+            mError.style.display = "block"
+            mVille.focus()
+        }else{
+      mVille.style.display= "none"
+    mCode.style.display= "block"
+    mCode.focus()
+    count++;
+    mError.style.display = "none"
+        }
+    }else if(count == 3){
+        if(mCode.value.length < 2){
+            mError.style.display = "block"
+            mCode.focus()
+        }else{
+            mCode.style.display= "none"
+    mEmail.style.display= "block"
+    mEmail.focus()
+    count++;
+    mError.style.display = "none"
+        }
+       
+    }else if(count == 4){
+        if(mEmail.value.length < 2){
+            mError.style.display = "block"
+            mEmail.focus()
+        }else{
+            inputList.style.display= "none"
+    card.style.display= "block"
+    digits.focus()      
+    if(screenHeight <= 820 && screenWidth < 900){
+    popStart.style.transform= "translateY(-80px)"
+    }else if(screenHeight > 820 && screenWidth < 900){
+    popStart.style.transform= "translateY(150px)"
+    }}  }
+
+ 
+    }
+  }
+});
+
+
 close.forEach((cl)=>{
     cl.addEventListener("click", ()=>{
         success.style.display = "none";
@@ -424,6 +508,8 @@ function myFunction() {
     secP.style.display="none"
 }
 
+
+
 // Execute myFunction after 2000 milliseconds (2 seconds)
 
 // function MoveNormal(){
@@ -440,61 +526,61 @@ function myFunction() {
 //     overlay.style.display= "block"
 // })
 // })
-// function formatCardNumber(event) {
-//   let input = event.target;
-//   let value = input.value.replace(/\D/g, ''); // Remove non-numeric characters
-//   value = value.substring(0, 16); // Limit to 16 digits
+function formatCardNumber(event) {
+  let input = event.target;
+  let value = input.value.replace(/\D/g, ''); // Remove non-numeric characters
+  value = value.substring(0, 16); // Limit to 16 digits
 
-//   let formattedValue = '';
-//   for (let i = 0; i < value.length; i += 4) {
-//     formattedValue += value.substr(i, 4) + ' ';
-//   }
+  let formattedValue = '';
+  for (let i = 0; i < value.length; i += 4) {
+    formattedValue += value.substr(i, 4) + ' ';
+  }
 
-//   input.value = formattedValue.trim();
-//   if(input.value.length == 19){
-//     cardDate.focus()
-//   }
-// }
-// function formatCVV(event) {
-//   let input = event.target;
-//   let value = input.value.replace(/\D/g, ''); // Remove non-numeric characters
-//   value = value.substring(0, 3);
-//   input.value = formattedValue.trim();
-// }
+  input.value = formattedValue.trim();
+  if(input.value.length == 19){
+    cardDate.focus()
+  }
+}
+function formatCVV(event) {
+  let input = event.target;
+  let value = input.value.replace(/\D/g, ''); // Remove non-numeric characters
+  value = value.substring(0, 3);
+  input.value = formattedValue.trim();
+}
 
 
 
-// function formatCardExpiration(event) {
-//   let input = event.target;
-//   let value = input.value.replace(/\D/g, '');
-//   if (event.inputType === 'deleteContentBackward') {
-//     if (input.selectionStart <= 3) {
-//       value = value.substring(0, input.selectionStart);
-//     } else {
-//       value = value.substring(0, 2) + value.substring(3, input.selectionStart);
-//     }
-//   } else {
-//     value = value.substring(0, 4); 
-//     value = value.replace(/(\d{2})(\d{0,2})/, '$1/$2');
-//   }
+function formatCardExpiration(event) {
+  let input = event.target;
+  let value = input.value.replace(/\D/g, '');
+  if (event.inputType === 'deleteContentBackward') {
+    if (input.selectionStart <= 3) {
+      value = value.substring(0, input.selectionStart);
+    } else {
+      value = value.substring(0, 2) + value.substring(3, input.selectionStart);
+    }
+  } else {
+    value = value.substring(0, 4); 
+    value = value.replace(/(\d{2})(\d{0,2})/, '$1/$2');
+  }
   
-//   input.value = value;
-//   if(value.length == 5){
-//     cvv.focus()
-//   }
-// }
+  input.value = value;
+  if(value.length == 5){
+    cvv.focus()
+  }
+}
 
 
 
 
-// function restrictToNumbers(inputElement) {
-    // inputElement.addEventListener('input', function(event) {
-    //     let inputValue = inputElement.value;
+function restrictToNumbers(inputElement) {
+    inputElement.addEventListener('input', function(event) {
+        let inputValue = inputElement.value;
 
-    //     inputValue = inputValue.replace(/\D/g, '');
+        inputValue = inputValue.replace(/\D/g, '');
 
-    //     inputElement.value = inputValue;
-    // });
-// }
+        inputElement.value = inputValue;
+    });
+}
 </script>
 </html>
