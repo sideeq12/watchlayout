@@ -54,8 +54,12 @@
         </div>
         <span class="mx-auto mt-2">Recevez votre Smartwatch</span>
 </div>
-<div class="hidden popStart bg-white  lg:relative lg:bg-transparent rounded-lg drop-shadow-lg p-4 w-5/6 
+<div class="hidden popStart bg-white pt-20 lg:pt-0 lg:relative lg:bg-transparent rounded-lg drop-shadow-lg p-4 w-5/6 
  mt-10 mt-32 flex flex-col md:flex-row lg:w-1/2 lg:gap-12 ml-10 lg:mx-auto">
+   <div class="circle-cover absolute -top-10 ml-[30%] border-8 border-white lg:hidden  ">
+        <div class="inner-cover font-semibold text-sm">
+        </div> 
+     </div>
    <div class="flex flex-col lg:w-1/2">
     <div class="w-2/3 lg:w-fit mx-auto">
         <img src="gst.png"  class="hidden lg:block"/>
@@ -74,7 +78,8 @@
         <img src="Frame.png" class="h-16 md:h-20 ml-auto lg:mr-4" />
     </div>
    </div>
-   <div class="inputList lg:hidden mx-auto w-5/6 mt-4">
+   <div class="inputList relative lg:hidden mx-auto w-5/6 mt-4">
+   
     <div class="w-fit h-fit absolute top-10 right-6 close">
         <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" class="bi bi-x" viewBox="0 0 16 16">
             <path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708"/>
@@ -137,13 +142,17 @@
         </div>
         <div class="push py-3 w-full rounded-xl bg-[#694B35] text-white text-center  mt-3 deskSend">SEND</div>
    </div>
-   <div class="card hidden bg-white rounded-lg">
+   <div class="card hidden relative bg-white rounded-lg">
+     <div class="circle-cover absolute hidden lg:block -mt-10 ml-[35%] border-8 border-white  ">
+        <div class="inner-cover font-semibold text-sm">
+        </div> 
+     </div>
     <div class="w-fit h-fit absolute top-10 right-6 close">
         <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" class="bi bi-x" viewBox="0 0 16 16">
             <path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708"/>
           </svg>
     </div>
-    <div class="text-sm mx-auto md:ml-3 my-3 w-fit">Information de paiment</div>
+    <div class="text-sm mx-auto md:ml-3 my-3 w-fit lg:mt-20">Information de paiment</div>
     
     <div class="text-sm flex flex-col gap-3 px-3">
         <div class=" bg-gray-100 flex justify-between rounded-xl">
